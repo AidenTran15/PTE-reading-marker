@@ -1,5 +1,7 @@
 import pyttsx3
 import speech_recognition as sr
+from sources import paragraphs
+import random
 
 engine = pyttsx3.init('sapi5')
 
@@ -10,7 +12,6 @@ def myCommand():
    
     r = sr.Recognizer()                                                                                   
     with sr.Microphone() as source:                                                                       
-        print("Listening...")
         r.pause_threshold = 3
         audio = r.listen(source)
     try:
@@ -25,6 +26,11 @@ def myCommand():
     return query
 
 if __name__ == '__main__':
+    print("Instruction: You will be presented with a paragraph, start reading that paragraph when you see the message 'Please start speaking...'")
+    num_of_paragraph = len(paragraphs)
+    randomNumber = random.randint(0, num_of_paragraph-1 )
+    print('Testing paragraph: ', paragraphs[randomNumber])
+
     print('Please start speaking...')
 
     query = myCommand()
