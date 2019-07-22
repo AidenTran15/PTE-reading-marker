@@ -1,10 +1,4 @@
-import pyttsx3
-import speech_recognition as sr
-from sources import paragraphs
-import random
-import json
-
-crediential = {
+ {
   "type": "service_account",
   "project_id": "learnraise-235507",
   "private_key_id": "c3db04a6871c6bde026eb0ad99fa71022c1679e6",
@@ -16,52 +10,3 @@ crediential = {
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pte-maker%40learnraise-235507.iam.gserviceaccount.com"
 }
-
-
-engine = pyttsx3.init('sapi5')
-
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[len(voices)-1].id)
-
-def myCommand():
-    # Record the user's voice
-    r = sr.Recognizer()                                                                                   
-    with sr.Microphone() as source:                                                                       
-        r.pause_threshold = 3
-        audio = r.listen(source)
-    # Send the audio to Google to convert into text
-    try: 
-        print('Analyzing...')
-        query = r.recognize_google_cloud(audio,credentials_json= json.dumps(crediential), language='en-US');
-        
-    except sr.UnknownValueError:
-        print('Sorry I dont understand')
-        query = str(input('Command: '))
-    
-    return query
-
-if __name__ == '__main__':
-    print("Instruction: You will be presented with a paragraph, start reading that paragraph when you see the message 'Please start speaking...'")
-    #Calculate the numnber of pragraphs
-    num_of_paragraph = len(paragraphs)
-    #Generate a random index
-    randomNumber = random.randint(0, num_of_paragraph-1 )
-    
-    paragraph =  paragraphs[randomNumber]
-    print('Testing paragraph: ', paragraph)
-
-    print('Please start speaking...')
-
-    userInput = myCommand()
-
-    print('This is what you just said: ', userInput)
-    
-    splitParagraph = paragraph.split()
-    splitUserInput = userInput.split()
-    total = len(splitParagraph)
-    countCorrect = 0
-    
-    for i in range(len(splitUserInput)):
-        if splitParagraph[i] == splitUserInput[i]:
-            countCorrect += 1
-    print(str(countCorrect/total*100)+"%")

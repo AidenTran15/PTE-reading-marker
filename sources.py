@@ -1,5 +1,5 @@
 paragraphs = [
-    'This is a paragraph',
-    'This is another paragraph',
-    'This is a long paragraph'
+    'The Ofﬁce of Personnel Management was the target of the attack, but data from nearly every government agency was stolen. U.S. investigators say they believe Chinese hackers were behind the breach.',
+    'While the Republican field is packed with male candidates, so far, some of the sharpest Clinton critics have come from women. Democrats successfully campaigned on an alleged GOP perpetrated "war on women" in 2012, but faltered in 2014 when they tried the same tactic. With Hillary Clinton as the likely Democratic nominee, the fight for women voters will be a central part of the 2016 campaign.',
+    'As far as politics go, the responses are just as varied. Mitigation is common and calls for a reduction of emissions and less reliance on fossil fuels. Coal burning power plants are now replaced with hydraulic power plants and electric cars are replacing some gasoline efﬁcient cars. Many people, however, feel that this is not enough.'
 ]
